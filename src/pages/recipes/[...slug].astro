@@ -5,11 +5,13 @@ import Recipe from '../../layouts/Recipe.astro';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('recipes');
+
   return recipes.map((recipe) => ({
     params: { slug: recipe.id },
     props: recipe
   }));
 }
+
 type Props = CollectionEntry<'recipes'>;
 
 const recipe = Astro.props;

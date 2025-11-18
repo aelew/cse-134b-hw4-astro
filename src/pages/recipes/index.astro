@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 
 import RecipeCard from '../../components/RecipeCard.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const recipes = (await getCollection('recipes')).sort(
@@ -10,7 +9,7 @@ const recipes = (await getCollection('recipes')).sort(
 );
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<BaseLayout>
   <main>
     <h1>Recipes</h1>
     <p>Simple recipes with easy-to-find ingredients.</p>
