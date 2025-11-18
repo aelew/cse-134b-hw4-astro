@@ -5,6 +5,7 @@
 import type { ImageMetadata } from 'astro';
 
 import { SITE_TITLE } from '../consts';
+import { ClientRouter } from "astro:transitions";
 
 import '../styles/global.css';
 
@@ -73,3 +74,5 @@ const { title, description, image } = Astro.props;
     <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
   )
 }
+
+<ClientRouter />
