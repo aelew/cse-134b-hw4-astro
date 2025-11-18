@@ -1,0 +1,49 @@
+---
+interface Props {
+  ingredients: string[];
+}
+
+const { ingredients } = Astro.props;
+---
+
+<section id="ingredients">
+  <h2>Ingredients</h2>
+  <ul>
+    {ingredients.map((ingredient) => <li>{ingredient}</li>)}
+  </ul>
+</section>
+
+<style>
+  #ingredients {
+    background: var(--gray-light);
+    border-radius: 8px;
+    margin: 2rem 0;
+
+    h2 {
+      margin-top: 0;
+      color: var(--black);
+      font-size: 1.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.6;
+
+        &:before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: var(--accent);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+</style>

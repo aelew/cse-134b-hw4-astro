@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+
+import RecipeCard from '../../components/RecipeCard.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const recipes = (await getCollection('recipes')).sort(
+  (a, b) => b.data.date.getDate() - a.data.date.getDate()
+);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main>
+    <h1>Recipes</h1>
+    <p>Simple recipes with easy-to-find ingredients.</p>
+    <ul>
+      {
+        recipes.map((recipe) => (
+          <li>
+            <RecipeCard slug={recipe.id} {...recipe.data} />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    p {
+      text-align: center;
+      color: rgb(var(--gray));
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+</style>

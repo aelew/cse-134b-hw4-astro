@@ -1,0 +1,42 @@
+---
+interface Props {
+  step: number;
+  instruction: string;
+}
+
+const { step, instruction } = Astro.props;
+---
+
+<recipe-step>
+  <step-number>{step}</step-number>
+  <step-text>{instruction}</step-text>
+</recipe-step>
+
+<style>
+  recipe-step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+
+    step-number {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    step-text {
+      flex: 1;
+      padding-top: 0.5rem;
+      line-height: 1.6;
+    }
+  }
+</style>
