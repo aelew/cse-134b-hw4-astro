@@ -1,7 +1,7 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 
-import Recipe from '../../layouts/Recipe.astro';
+import RecipeLayout from '../../layouts/RecipeLayout.astro';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('recipes');
@@ -18,6 +18,6 @@ const recipe = Astro.props;
 const { Content } = await render(recipe);
 ---
 
-<Recipe {...recipe.data}>
+<RecipeLayout {...recipe.data}>
   <Content />
-</Recipe>
+</RecipeLayout>
